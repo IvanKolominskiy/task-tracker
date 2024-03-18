@@ -1,0 +1,15 @@
+.category-button {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: bold;
+  margin-right: 1rem;
+  background: #fc5185;
+  color: #fff;
+}
+
+.category-button:hover {
+  opacity: 0.8;
+}
