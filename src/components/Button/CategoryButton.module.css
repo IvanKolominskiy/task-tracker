@@ -1,4 +1,4 @@
-.category-button {
+.categoryButton {
   padding: 0.8rem 2rem;
   border: none;
   border-radius: 5px;
@@ -10,11 +10,11 @@
   color: #000;
 }
 
-.category-button:hover {
+.categoryButton:hover {
   opacity: 0.8;
 }
 
-.category-button.active {
+.categoryButton.active {
   background: #fc5185;
   color: #fff;
 }

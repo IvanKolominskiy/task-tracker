@@ -1,10 +1,14 @@
 import React from "react";
-import "./CategoryButton.css";
+import classes from "./CategoryButton.module.css";
 
 export default function CategoryButton({ children, isActive, onClick }) {
   return (
     <button
-      className={isActive ? "category-button active" : "category-button"}
+      className={
+        isActive
+          ? `${classes.categoryButton} ${classes.active}`
+          : classes.categoryButton
+      }
       onClick={onClick}
     >
       {children}
