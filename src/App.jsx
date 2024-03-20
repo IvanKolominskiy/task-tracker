@@ -3,20 +3,12 @@ import "./App.css";
 import CategorySelectionSection from "./components/Section/CategorySelectionSection";
 import InputForm from "./components/Form/InputForm";
 import TaskList from "./components/List/TaskList";
-import { v4 } from "uuid";
 
 function App() {
   const [category, setCategory] = useState("toDo");
   const [tasks, setTasks] = useState(
     JSON.parse(localStorage.getItem(category)) || []
   );
-
-  function addTask(value) {
-    const newTasks = [{ id: v4(), content: value }, ...tasks];
-
-    localStorage.setItem(category, JSON.stringify(newTasks));
-    setTasks(newTasks);
-  }
 
   return (
     <>
@@ -26,7 +18,11 @@ function App() {
         setCategory={setCategory}
         setTasks={setTasks}
       ></CategorySelectionSection>
-      <InputForm addTask={(task) => addTask(task)}></InputForm>
+      <InputForm
+        tasks={tasks}
+        setTasks={setTasks}
+        category={category}
+      ></InputForm>
       <TaskList tasks={tasks}></TaskList>
     </>
   );
