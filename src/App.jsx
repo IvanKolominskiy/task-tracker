@@ -3,10 +3,13 @@ import "./App.css";
 import CategorySelectionSection from "./components/Section/CategorySelectionSection";
 import InputForm from "./components/Form/InputForm";
 import { v4 } from "uuid";
+import TaskList from "./components/List/TaskList";
 
 function App() {
   const [category, setCategory] = useState("toDo");
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem(category)) || []
+  );
 
   function handleChange(category) {
     setCategory(category);
@@ -29,6 +32,7 @@ function App() {
         onChange={(current) => handleChange(current)}
       ></CategorySelectionSection>
       <InputForm addTask={(task) => addTask(task)}></InputForm>
+      <TaskList tasks={tasks}></TaskList>
     </>
   );
 }
