@@ -7,7 +7,7 @@ export default function TaskList({ tasks }) {
       {tasks.length === 0
         ? "You don't have tasks"
         : tasks.map((task) => (
-            <TaskItem id={task.id} content={task.content}></TaskItem>
+            <TaskItem key={task.id} content={task.content}></TaskItem>
           ))}
     </div>
   );
