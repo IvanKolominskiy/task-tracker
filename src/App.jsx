@@ -23,7 +23,11 @@ function App() {
         setTasks={setTasks}
         category={category}
       ></InputForm>
-      <TaskList tasks={tasks}></TaskList>
+      <TaskList
+        tasks={tasks}
+        setTasks={setTasks}
+        category={category}
+      ></TaskList>
     </>
   );
 }
