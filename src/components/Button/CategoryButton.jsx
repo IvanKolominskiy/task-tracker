@@ -1,7 +1,13 @@
 import React from "react";
 import classes from "./CategoryButton.module.css";
 
-export default function CategoryButton({ children, isActive, onClick }) {
+export default function CategoryButton({
+  children,
+  isActive,
+  onClick,
+  onDrop,
+  onDragOver,
+}) {
   return (
     <button
       className={
@@ -10,6 +16,8 @@ export default function CategoryButton({ children, isActive, onClick }) {
           : classes.categoryButton
       }
       onClick={onClick}
+      onDrop={(e) => onDrop(e)}
+      onDragOver={(e) => onDragOver(e)}
     >
       {children}
     </button>

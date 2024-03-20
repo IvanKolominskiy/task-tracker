@@ -11,6 +11,10 @@ export default function TaskList({ tasks, setTasks, category }) {
     );
   }
 
+  function handleDragStart(e, task) {
+    e.dataTransfer.setData("task", JSON.stringify(task));
+  }
+
   return (
     <div style={{ display: "inline-flex", flexDirection: "column" }}>
       {tasks.length === 0
@@ -19,8 +23,8 @@ export default function TaskList({ tasks, setTasks, category }) {
             <TaskItem
               key={task.id}
               content={task.content}
-              taskId={task.id}
-              deleteTask={(id) => handleDelete(id)}
+              deleteTask={() => handleDelete(task.id)}
+              onDragStart={(e) => handleDragStart(e, task)}
             ></TaskItem>
           ))}
     </div>

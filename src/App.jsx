@@ -17,6 +17,7 @@ function App() {
         active={category}
         setCategory={setCategory}
         setTasks={setTasks}
+        tasks={tasks}
       ></CategorySelectionSection>
       <InputForm
         tasks={tasks}
