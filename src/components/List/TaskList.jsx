@@ -38,28 +38,30 @@ export default function TaskList({ tasks, setTasks, category }) {
 
   return (
     <div style={{ display: "inline-flex", flexDirection: "column" }}>
-      {tasks.length === 0
-        ? "You don't have tasks"
-        : tasks.map((task) =>
-            task.needEdit ? (
-              <InputForm
-                key={task.id}
-                category={category}
-                tasks={tasks}
-                setTasks={setTasks}
-                taskId={task.id}
-                mode={"edit"}
-              ></InputForm>
-            ) : (
-              <TaskItem
-                key={task.id}
-                content={task.content}
-                deleteTask={() => handleDelete(task.id)}
-                editTask={() => handleEdit(task.id)}
-                onDragStart={(e) => handleDragStart(e, task)}
-              ></TaskItem>
-            )
-          )}
+      {tasks.length === 0 ? (
+        <h3 style={{ color: "#fff" }}>You don't have tasks</h3>
+      ) : (
+        tasks.map((task) =>
+          task.needEdit ? (
+            <InputForm
+              key={task.id}
+              category={category}
+              tasks={tasks}
+              setTasks={setTasks}
+              taskId={task.id}
+              mode={"edit"}
+            ></InputForm>
+          ) : (
+            <TaskItem
+              key={task.id}
+              content={task.content}
+              deleteTask={() => handleDelete(task.id)}
+              editTask={() => handleEdit(task.id)}
+              onDragStart={(e) => handleDragStart(e, task)}
+            ></TaskItem>
+          )
+        )
+      )}
     </div>
   );
 }
