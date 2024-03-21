@@ -43,6 +43,7 @@ export default function TaskList({ tasks, setTasks, category }) {
         : tasks.map((task) =>
             task.needEdit ? (
               <InputForm
+                key={task.id}
                 category={category}
                 tasks={tasks}
                 setTasks={setTasks}

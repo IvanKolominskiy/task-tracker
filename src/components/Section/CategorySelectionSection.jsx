@@ -11,6 +11,15 @@ export default function CategorySelectionSection({
     setCategory(category);
 
     setTasks(JSON.parse(localStorage.getItem(category)) || []);
+
+    localStorage.setItem(
+      active,
+      JSON.stringify(
+        tasks.map((task) =>
+          task.needEdit ? { ...task, needEdit: false } : task
+        )
+      )
+    );
   }
 
   function handleDrop(e, category) {
