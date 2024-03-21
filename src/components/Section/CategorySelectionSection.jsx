@@ -36,7 +36,11 @@ export default function CategorySelectionSection({
     );
   }
 
-  function handleDragOver(e) {
+  function handleDragOver(e, category) {
+    if (category === active) {
+      return;
+    }
+
     e.preventDefault();
   }
 
@@ -46,7 +50,7 @@ export default function CategorySelectionSection({
         isActive={active === "toDo"}
         onClick={() => handleClick("toDo")}
         onDrop={(e) => handleDrop(e, "toDo")}
-        onDragOver={(e) => handleDragOver(e)}
+        onDragOver={(e) => handleDragOver(e, "toDo")}
       >
         To Do
       </CategoryButton>
@@ -54,7 +58,7 @@ export default function CategorySelectionSection({
         isActive={active === "inProgress"}
         onClick={() => handleClick("inProgress")}
         onDrop={(e) => handleDrop(e, "inProgress")}
-        onDragOver={(e) => handleDragOver(e)}
+        onDragOver={(e) => handleDragOver(e, "inProgress")}
       >
         In Progress
       </CategoryButton>
@@ -62,7 +66,7 @@ export default function CategorySelectionSection({
         isActive={active === "done"}
         onClick={() => handleClick("done")}
         onDrop={(e) => handleDrop(e, "done")}
-        onDragOver={(e) => handleDragOver(e)}
+        onDragOver={(e) => handleDragOver(e, "done")}
       >
         Done
       </CategoryButton>
