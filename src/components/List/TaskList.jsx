@@ -1,5 +1,6 @@
 import React from "react";
 import TaskItem from "../Item/TaskItem";
+import InputForm from "../Form/InputForm";
 
 export default function TaskList({ tasks, setTasks, category }) {
   function handleDelete(id) {
@@ -11,6 +12,20 @@ export default function TaskList({ tasks, setTasks, category }) {
     );
   }
 
+  function handleEdit(id) {
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, needEdit: true } : task))
+    );
+    localStorage.setItem(
+      category,
+      JSON.stringify(
+        tasks.map((task) =>
+          task.id === id ? { ...task, needEdit: true } : task
+        )
+      )
+    );
+  }
+
   function handleDragStart(e, task) {
     e.dataTransfer.setData("task", JSON.stringify(task));
   }
@@ -19,14 +34,25 @@ export default function TaskList({ tasks, setTasks, category }) {
     <div style={{ display: "inline-flex", flexDirection: "column" }}>
       {tasks.length === 0
         ? "You don't have tasks"
-        : tasks.map((task) => (
-            <TaskItem
-              key={task.id}
-              content={task.content}
-              deleteTask={() => handleDelete(task.id)}
-              onDragStart={(e) => handleDragStart(e, task)}
-            ></TaskItem>
-          ))}
+        : tasks.map((task) =>
+            task.needEdit ? (
+              <InputForm
+                category={category}
+                tasks={tasks}
+                setTasks={setTasks}
+                taskId={task.id}
+                mode={"edit"}
+              ></InputForm>
+            ) : (
+              <TaskItem
+                key={task.id}
+                content={task.content}
+                deleteTask={() => handleDelete(task.id)}
+                editTask={() => handleEdit(task.id)}
+                onDragStart={(e) => handleDragStart(e, task)}
+              ></TaskItem>
+            )
+          )}
     </div>
   );
 }

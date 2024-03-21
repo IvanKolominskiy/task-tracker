@@ -23,6 +23,7 @@ function App() {
         tasks={tasks}
         setTasks={setTasks}
         category={category}
+        mode={"add"}
       ></InputForm>
       <TaskList
         tasks={tasks}

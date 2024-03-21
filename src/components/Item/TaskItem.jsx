@@ -3,7 +3,12 @@ import classes from "./TaskItem.module.css";
 import { MdCreate } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
-export default function TaskItem({ content, deleteTask, onDragStart }) {
+export default function TaskItem({
+  content,
+  deleteTask,
+  editTask,
+  onDragStart,
+}) {
   return (
     <div
       className={classes.taskItem}
@@ -12,7 +17,7 @@ export default function TaskItem({ content, deleteTask, onDragStart }) {
     >
       <p>{content}</p>
       <div style={{ marginLeft: "10px" }}>
-        <MdCreate className={classes.editIcon}></MdCreate>
+        <MdCreate className={classes.editIcon} onClick={editTask}></MdCreate>
         <MdDelete
           className={classes.deleteIcon}
           onClick={deleteTask}
