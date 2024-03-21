@@ -14,13 +14,19 @@ export default function TaskList({ tasks, setTasks, category }) {
 
   function handleEdit(id) {
     setTasks(
-      tasks.map((task) => (task.id === id ? { ...task, needEdit: true } : task))
+      tasks.map((task) =>
+        task.id === id
+          ? { ...task, needEdit: true }
+          : { ...task, needEdit: false }
+      )
     );
     localStorage.setItem(
       category,
       JSON.stringify(
         tasks.map((task) =>
-          task.id === id ? { ...task, needEdit: true } : task
+          task.id === id
+            ? { ...task, needEdit: true }
+            : { ...task, needEdit: false }
         )
       )
     );
